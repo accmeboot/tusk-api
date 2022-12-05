@@ -14,6 +14,6 @@
 
 > Run dev server
 
-```bash
-python manage.py runserver
+```console
+$ python manage.py runserver
 ```
