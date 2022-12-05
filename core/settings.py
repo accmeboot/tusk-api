@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
+    "drf_spectacular",
     "users.apps.UsersConfig",
 ]
 
@@ -142,6 +143,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
@@ -168,4 +170,10 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
     "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
+}
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Tusk API",
+    "DESCRIPTION": "Django based API for Tusk apps",
+    "VERSION": API_VERSION,
+    "SERVE_INCLUDE_SCHEMA": False,
 }
