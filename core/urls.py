@@ -9,6 +9,8 @@ from utils.get_api_url import get_api_url
 urlpatterns = [
     path("admin/", admin.site.urls),
     path(get_api_url("users"), include("users.urls")),
+    path(get_api_url("projects"), include("projects.urls")),
+    path(get_api_url("tasks"), include("tasks.urls")),
 ]
 
 if settings.DEBUG:
