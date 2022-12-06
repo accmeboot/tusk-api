@@ -31,6 +31,7 @@ class CustomUserSignupSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = (
+            "id",
             "email",
             "password",
             "confirm_password",
@@ -60,3 +61,15 @@ class CustomUserSignupSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = (
+            "id",
+            "email",
+            "first_name",
+            "last_name",
+            "role",
+        )

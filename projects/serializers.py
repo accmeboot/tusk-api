@@ -1,28 +1,19 @@
-from rest_framework import serializers, exceptions
+from rest_framework import serializers
 
 from projects.models import Project
+from users.serializers import CustomUserSerializer
 
 
 class ProjectSerializer(serializers.ModelSerializer):
+    created_by = CustomUserSerializer(read_only=True)
+    id = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = Project
         fields = (
+            "id",
             "name",
             "status",
+            "created_by",
         )
-
-    def create(self, validated_data):
-        request = self.context.get("request")
-
-        if request and hasattr(request, "user"):
-            user = request.user
-            project = Project.objects.create(
-                name=validated_data["name"],
-                status=validated_data["status"],
-                created_by=user,
-            )
-            project.save()
-
-            return project
-
-        raise exceptions.APIException("Something whent wrong")
+        depth = 1
