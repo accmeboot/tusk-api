@@ -1,6 +1,7 @@
 from rest_framework import permissions, viewsets
-from tasks.models import Task
+from django_filters.rest_framework import DjangoFilterBackend
 
+from tasks.models import Task
 from tasks.serializers import TaskSerializer
 
 
@@ -8,6 +9,5 @@ class TasksViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
     permission_classes = [permissions.IsAuthenticated]
-
-    def perform_create(self, serializer):
-        return serializer.save(created_by=self.request.user)
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ("project",)

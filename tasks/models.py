@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+# from labels.models import Label
+
 from projects.models import Project
 
 
@@ -24,6 +26,7 @@ class Task(models.Model):
         Project,
         on_delete=models.CASCADE,
     )
+    # labels = models.ManyToManyField(Label)
 
     def __str__(self) -> str:
         return self.title

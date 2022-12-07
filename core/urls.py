@@ -11,6 +11,7 @@ urlpatterns = [
     path(get_api_url("users"), include("users.urls")),
     path(get_api_url("projects"), include("projects.urls")),
     path(get_api_url("tasks"), include("tasks.urls")),
+    path(get_api_url("labels"), include("labels.urls")),
 ]
 
 if settings.DEBUG:
