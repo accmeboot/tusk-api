@@ -7,3 +7,9 @@ class LabelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Label
         fields = "__all__"
+
+
+class LabelTaskPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Label
+        fields = ("id",)
